@@ -11,7 +11,7 @@ grup_datasnp <- find.clusters(datasnp, max.n.clust=15) # How many clusters??
 head(grup_datasnp$Kstat, "your_selected_k")
 table(pop(datasnp), grup_datasnp$grp) ## Table: original populations vs new clusters
 table.value(table(pop(datasnp), grup_datasnp$grp), col.lab=paste("inf", 1:"your_selected_k"),row.lab=c(popNames(datasnp)))
-dapambos <- dapc(datasnp, grup_datasnp$grp) # DAPC
+dapambos <- dapc(datasnp, grup_datasnp$grp) # DAPC. Principal components to retain will be k-1 (Following Thia 2022 recomendations)
 myCol <- c("red","darkgreen","orange","blue","purple") # k colors for each cluster
 scatter(dapambos, 
         posi.da="bottomleft", 

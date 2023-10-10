@@ -1,0 +1,31 @@
+rm(list=ls())
+graphics.off()
+setwd("Where_is_your_genepop")
+
+#Input: Genepop file with extension ".gen". Example: "mydatasnp.gen"
+
+library("adegenet")
+
+datasnp<-read.genepop("mydatasnp.gen",ncode = 3,quiet=FALSE)
+grup_datasnp <- find.clusters(datasnp, max.n.clust=15) # How many clusters?? 
+head(grup_datasnp$Kstat, "your_selected_k")
+table(pop(datasnp), grup_datasnp$grp) ## Table: original populations vs new clusters
+table.value(table(pop(datasnp), grup_datasnp$grp), col.lab=paste("inf", 1:"your_selected_k"),row.lab=c(popNames(datasnp)))
+dapambos <- dapc(datasnp, grup_datasnp$grp) # DAPC
+myCol <- c("red","darkgreen","orange","blue","purple") # k colors for each cluster
+scatter(dapambos, 
+        posi.da="bottomleft", 
+        bg="white", 
+        pch=c(18,15,19,6,17,16),
+        col=mycol,
+        cstar = 0,
+        clab = 0,
+        leg=T,
+        txt.leg = c(expression(italic("Your species 1"))), # Only if you want to plot legend with species names. Add according the number of species that you have.
+        posi.leg="bottomright"
+)
+
+#Posterior probabilities for plotting and individual asignation.
+
+posteriori<-dapambos$posterior
+write.table(posteriori,file = "posteriori.csv")

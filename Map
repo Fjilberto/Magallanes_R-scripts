@@ -44,6 +44,7 @@ ggplot() +
                    nudge_x = c(-1,1,1.5,-1,0.4,-0.2,-0.6,0.4,1), 
                    nudge_y = c(-0.7,0.5,0,0.3,0.3,0.3,0.2,0.2,0.2),
   ) +
+  # Use only if you added to your input coordinates for geographical accidents and want it plotted in it
   geom_text_repel(data = myti_pop[10:19,],aes(label=pop, x = Lon, y = Lat),
                    alpha = 1, size = 4, fontface=2,segment.color = c(NA,rep("black",9)), #alpha manipula la transparencia, 1 es sin 
                    nudge_x = c(0.5,4,0.4,-2.5,-3,-1,rep(0,2),0.5,1.5), 
@@ -63,6 +64,6 @@ ggplot() +
   guides(color = guide_legend(override.aes = list(linetype = 0, size=3))) +
   theme(legend.position = "none")
 
-#Save plota as tiff
+### Save map as tiff file
 
 ggsave(path = getwd(), filename = "sampling_locations.tiff", width = 16, height = 8.3, device='tiff', dpi=300)

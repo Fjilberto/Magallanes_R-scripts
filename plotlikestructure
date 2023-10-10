@@ -1,7 +1,7 @@
 ###Plots like structure
 
-rm(list=ls()) # borra el ambiente
-graphics.off() # Limpiar la lista de graficos
+rm(list=ls())
+graphics.off()
 
 library("stringr")
 library("reshape")

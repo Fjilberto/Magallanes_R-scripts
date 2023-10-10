@@ -15,6 +15,7 @@ The data must be in the following format (Example for k=2), without header:
 ID Score1 Score2
 
 #ID: code of 4 letters for sampling locations, plus individual number. Example: WXYZ01
+#Score: Value between 0 to 1.
 
 #### Plot
 

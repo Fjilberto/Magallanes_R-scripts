@@ -38,7 +38,7 @@ move1 <-data.frame(pop=c("your_pop_names"),
 
 # Each group can be a species or hybrids between some species
 
-#### Plot map
+#### Map
 
 # Get world map
 world <- getMap(resolution = "high")

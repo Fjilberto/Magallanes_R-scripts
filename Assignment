@@ -1,3 +1,9 @@
+# 
+# Description:
+#
+# Script to generate tables for results of assigment from different methods such as DAPC, GeneClass2 or STRUCTURE
+#
+
 rm(list=ls())
 
 library("stringr")

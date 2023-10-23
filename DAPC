@@ -20,13 +20,6 @@ dapcdatos = dapc(datos, grup_referenciayambos$grp)
 
 table(pop(datos),dapcdatos$assign)
 
-#### Plot by population
-
-# Analyse how much percent of genetic variance is explained by each axis
-percent = dapcdatos$eig/sum(dapcdatos$eig)*100
-barplot(percent, ylab = "Genetic variance explained by eigenvectors (%)", ylim = c(0,80),
-        names.arg = round(percent, 1),las=1)
-
 ind_coords = as.data.frame(dapcdatos$ind.coord) # Create a data.frame containing individual coordinates
 colnames(ind_coords) = c("Axis1","Axis2","Axis3") # Rename columns of dataframe
 ind_coords$Ind = indNames(datos) # Add a column containing individuals
@@ -34,10 +27,7 @@ ind_coords$Site = datos$pop # Add a column with the site IDs
 centroid = aggregate(cbind(Axis1, Axis2, Axis3) ~ Site, data = ind_coords, FUN = mean) # Calculate centroid (average) position for each population
 ind_coords = left_join(ind_coords, centroid, by = "Site", suffix = c("",".cen")) # Add centroid coordinates to ind_coords dataframe
 
-# Color para cada grupo
-
-color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
-cols = sample(color,length(unique(datos$pop)))
+# Color by group
 
 cols = c("darkolivegreen4","dodgerblue3","goldenrod1","grey60","indianred1","plum",colorRampPalette(c("#E9CE53","#38845C"))(9))
 

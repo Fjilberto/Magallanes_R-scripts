@@ -1,27 +1,34 @@
+#
+# Description:
+#
+# Script to plot a map with sampling locations. Include the option to add landform names, colors by country or zone delimitation
+# Includes codes lines to add Pie Chart in each sampling locations to show species assignment or any other information.
+#
+
 rm(list=ls())
 graphics.off()
-setwd("Where_you_want_save")
+setwd("Where_you_want_save_your_plot")
 
-library(ggplot2)  # ggplot() fortify()
+library(ggplot2) 
 library(rgeos)
-library(rgdal)  # readOGR() spTransform()
-library(raster)  # intersect()
-library(ggsn)  # north2() scalebar()
-library(rworldmap)  # getMap()
+library(rgdal)  
+library(raster)  
+library(ggsn) 
+library(rworldmap)
 library(rworldxtra)
 library(scatterpie)
 library(ggrepel)
 
-#### Input data
+# Input data
 
-#Sampling data
 myti_pop <-data.frame(pop=c("your_pop_names"),
-                      Lat=c(your latitudes),
-                      Lon=c(your longitudes),
-                      #pais=c("United Kingdom","Argentina",rep("Chile",6),"Argentina",rep(NA,10)), #if you want to add the country where is the population
-                      #zone=c(rep("Zone 1",3),rep("Zone 2",3),rep("Zone 3",3),rep(NA,10))) #if you want to add zones
+                      Lat=c("your latitudes",
+                      Lon=c("your longitudes"),
+                      #pais=c("if you want to add the country where is the population: add your country names by each pop"),
+                      #zone=c("if you want to add zones by each pop")) 
 
 #PieCharts coordinates
+
 move1 <-data.frame(pop=c("your_pop_names"),
                    Lat=c(your latitudes),
                    Lon=c(your longitudes),
@@ -30,6 +37,8 @@ move1 <-data.frame(pop=c("your_pop_names"),
                    Group3=c(Individuals asigned by population to Group3))
 
 # Each group can be a species or hybrids between some species
+
+#### Plot map
 
 # Get world map
 world <- getMap(resolution = "high")

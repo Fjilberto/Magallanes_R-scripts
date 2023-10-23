@@ -1,7 +1,7 @@
 #
 # Description:
 #
-# Script that use probabilites of assignation from different methods such as DAPC, flock and geneclass to plot them as a STRUCTURE plot.
+# Script that use probabilites of assignation from different methods to plot them as a STRUCTURE plot.
 #
 
 rm(list=ls())

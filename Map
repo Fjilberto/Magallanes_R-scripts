@@ -1,7 +1,7 @@
 #
 # Description:
 #
-# Script to plot a map with sampling locations. Include the option to add landform names, colors by country or zone delimitation
+# Script to plot a map with sampling locations. Include the option to add landform names, colors by country or zone delimitation.
 #
 
 rm(list=ls())
@@ -25,6 +25,9 @@ myti_pop <-data.frame(pop=c("your_pop_names"),
                       Lon=c("your longitudes"),
                       #pais=c("if you want to add the country where is the population: add your country names by each pop"),
                       #zone=c("if you want to add zones by each pop")) 
+
+#### Map
+
 # Get world map
 world <- getMap(resolution = "high")
 
